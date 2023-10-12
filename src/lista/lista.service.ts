@@ -16,8 +16,10 @@ export class ListaService {
     return await this.listaRepository.find();
   }
 
-  create(createListaDto: CreateListaDto) {
-    return 'This action adds a new lista';
+  async create(createListaDto: CreateListaDto) {
+    console.log(createListaDto)
+    const newUser = this.listaRepository.create(createListaDto);  
+    return await this.listaRepository.save(newUser);
   }
 
   findOne(id: number) {
